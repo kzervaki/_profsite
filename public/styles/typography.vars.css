@@ -1,0 +1,39 @@
+/* =========================
+   Plain text (body)
+   ========================= */
+:root {
+  --text-font-family: system-ui, sans-serif;
+  --text-font-size: 16px;
+  --text-font-weight: 400;
+  --text-line-height: 1.6;
+  --text-letter-spacing: 0em;
+
+  --text-margin-top: 0;
+  --text-margin-right: 0;
+  --text-margin-bottom: 1rem;
+  --text-margin-left: 0;
+
+  --text-align: left;
+}
+
+/* =========================
+   Headings
+   ========================= */
+:root {
+  --heading-font-family: system-ui, sans-serif;
+  --heading-font-weight: 600;
+  --heading-line-height: 1.25;
+  --heading-letter-spacing: -0.01em;
+  --heading-align: left;
+
+  --h1-size: 2.25rem;
+  --h2-size: 1.75rem;
+  --h3-size: 1.4rem;
+  --h4-size: 1.15rem;
+  --h5-size: 1rem;
+  --h6-size: 0.875rem;
+
+  --heading-margin-top: 2rem;
+  --heading-margin-bottom: 0.75rem;
+}
+
