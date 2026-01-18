@@ -1,18 +1,22 @@
 ---
-const { title = "Astro App" } = Astro.props;
+// Optional props
+const { title = "Astro Site" } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
 
     <!-- Global styles -->
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
-    <slot />
+    <main>
+      <slot /> <!-- Page content goes here -->
+    </main>
   </body>
 </html>
 

@@ -7,3 +7,7 @@
 @import "./themes/theme-floral.css";
 @import "./themes/theme-sage.css";
 @import "./theme.apply.css";
+
+@import "./layout.vars.css";
+@import "./layout.css";
+
