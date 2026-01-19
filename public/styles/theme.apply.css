@@ -33,3 +33,18 @@
 [data-theme] ::selection {
   background-color: var(--theme-selection-color);
 }
+
+/* ---------- Links ---------- */
+[data-theme] a {
+  color: var(--theme-link-color);
+  text-decoration: var(--theme-link-underline);
+}
+
+[data-theme] a:hover {
+  color: var(--theme-link-hover-color);
+}
+
+[data-theme] a:active {
+  color: var(--theme-link-active-color);
+}
+

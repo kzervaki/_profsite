@@ -8,5 +8,11 @@
 
   --theme-border-color: hsl(120 25% 70%);       /* subtle border */
   --theme-surface-color: hsl(120 15% 85%);      /* card/panel background */
- --theme-selection-color: hsl(120 40% 50% / 0.3); /* semi-transparent highlight */
+  --theme-selection-color: hsl(120 40% 50% / 0.3); /* semi-transparent highlight */
+
+  --theme-link-color: hsl(120 35% 30%);
+  --theme-link-hover-color: hsl(120 45% 40%);
+  --theme-link-active-color: hsl(120 55% 25%);
+  --theme-link-underline: none;
+
 }

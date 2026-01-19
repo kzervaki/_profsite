@@ -15,3 +15,24 @@
 @import "./navigation-bar.css";
 @import "./site-footer.css";
 
+
+a {
+  text-decoration: none;
+  font-weight: var(--font-weight-link);
+  color: var(--color-link);
+  transition: color 0.25s ease;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+a:active {
+  color: var(--color-link-active);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-link-hover);
+  outline-offset: 2px;
+}
+

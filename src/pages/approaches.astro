@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import IntraLink from "../components/IntraLink.astro";
 import { CONFIG } from "../site-config";
 ---
 
@@ -13,10 +14,7 @@ import { CONFIG } from "../site-config";
       <p>This is approaches page: {CONFIG.todo}</p>
 
       <p>
-        See also
-        <a href=`${import.meta.env.BASE_URL}/services`>
-          services
-        </a>
+        See also <IntraLink location="services" text="services" />
       </p>
 
     </div>
