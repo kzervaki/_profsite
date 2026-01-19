@@ -1,5 +1,7 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro"
+import SiteFooter from "../components/SiteFooter.astro"
+
 const { title = "Astro Site" } = Astro.props;
 ---
 
@@ -20,7 +22,7 @@ const { title = "Astro Site" } = Astro.props;
     <main>
       <slot /> <!-- Page content goes here -->
     </main>
-
+    <SiteFooter />
   </body>
 
 </html>
