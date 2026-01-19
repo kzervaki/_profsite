@@ -10,6 +10,8 @@
 
 @import "./layout.vars.css";
 @import "./layout.css";
+
 @import "./site-header.css";
+@import "./navigation-bar.css";
 @import "./site-footer.css";
 
