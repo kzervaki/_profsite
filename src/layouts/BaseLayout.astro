@@ -1,10 +1,11 @@
 ---
-// Optional props
+import SiteHeader from "../components/SiteHeader.astro"
 const { title = "Astro Site" } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,10 +14,14 @@ const { title = "Astro Site" } = Astro.props;
     <!-- Global styles -->
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
+
   <body>
+    <SiteHeader />
     <main>
       <slot /> <!-- Page content goes here -->
     </main>
+
   </body>
+
 </html>
 
