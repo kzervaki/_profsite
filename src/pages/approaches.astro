@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { CONFIG } from "../site-config";
+---
+
+<BaseLayout title="Approaches">
+
+  <div data-theme="theme-floral">
+    <h1>Approaches</h1>
+    <div class="card" data-theme="theme-sage">
+      <p>This is approaches page: {CONFIG.todo}</p>
+    </div>
+  </div>
+
+</BaseLayout>
