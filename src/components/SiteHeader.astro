@@ -1,10 +1,39 @@
 ---
 import NavigationBar from "./NavigationBar.astro";
 import { CONFIG } from "../site-config";
+
+/*
+  Optional props:
+  - title
+  - subtitle
+  - logoSrc (optional)
+  - logoAlt
+  - homeHref (defaults to "/")
+*/
+const {
+  title = CONFIG.siteTitle ?? "Site Title",
+  subtitle = CONFIG.siteSubtitle ?? "Site subtitle",
+  logoSrc = null,
+  logoAlt = "Site logo",
+  homeHref = import.meta.env.BASE_URL,
+} = Astro.props;
 ---
 
 <header class="site-header">
-  <p>This is header: {CONFIG.todo}</p>
+  <a href={homeHref} class="site-header-link">
+    <div class="site-header-inner">
+      {logoSrc && (
+        <div class="site-header-logo">
+          <img src={logoSrc} alt={logoAlt} />
+        </div>
+      )}
+
+      <div class="site-header-banner">
+        <h1 class="site-header-title">{title}</h1>
+        <p class="site-header-subtitle">{subtitle}</p>
+      </div>
+    </div>
+  </a>
 </header>
 
 <NavigationBar />
