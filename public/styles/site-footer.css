@@ -1,6 +1,4 @@
 .site-footer {
-  --footer-height: 8rem; /* tunable */
-
   text-align: center;
   font-size: 0.9rem;
   border: none;
@@ -18,7 +16,6 @@
 
   /* Default position (relative, flow in DOM) */
   position: relative;
-  height: var(--footer-height);
   flex-shrink: 0; /* ensures it does not collapse in flex layout */
 }
 
