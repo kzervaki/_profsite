@@ -45,14 +45,13 @@ const pageTitle = pageSuffix
     <SiteHeader
       logoSrc=`${import.meta.env.BASE_URL}/images/logo-sample.jpg`
     />
+    <SiteNav />
 
-    <main class="page-wrapper">
-      <SiteNav />
-      <slot /> <!-- Page content goes here -->
+    <main class="site-main">
+      <slot />
     </main>
 
     <SiteFooter />
-
     <!-- Navigation behavior (auto-close + focus trap) -->
     <script src="/scripts/site-nav.js" defer></script>
   </body>

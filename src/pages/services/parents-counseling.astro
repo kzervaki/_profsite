@@ -1,16 +1,20 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SitePage from "../../components/SitePage.astro";
 import { CONFIG } from "../../site-config";
 ---
 
 <BaseLayout title="Συμβουλευτική γονέων" data-theme="theme-sage">
 
-  <div data-theme="theme-sage">
-    <h1>Parents Counseling</h1>
-    <div class="card" data-theme="theme-floral">
-      <p>This is parents counseling page</p>
-    </div>
-  </div>
+  <SitePage
+    title="Συμβουλευτική γονέων"
+    theme="theme-floral"
+  >
+    <p>
+      This is the couple-therapy page.
+    </p>
+
+  </SitePage>
 
 </BaseLayout>
 

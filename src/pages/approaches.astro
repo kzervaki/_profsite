@@ -1,36 +1,35 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LinkIntra from "../components/LinkIntra.astro";
+import SitePage from "../components/SitePage.astro";
 import { CONFIG } from "../site-config";
 ---
 
 <BaseLayout title="Θεραπευτικές προσεγγίσεις">
 
-  <div data-theme="theme-floral">
-    <h1>Approaches</h1>
+  <SitePage
+    title="Θεραπευτικές προσεγγίσεις"
+    theme="theme-floral"
+  >
+    <p>
+      This is approaches page.
+    </p>
 
-    <div class="card" data-theme="theme-sage">
+    <p>
+      See also <LinkIntra location="services" text="services" />.
+    </p>
 
-      <p>This is approaches page</p>
-
-      <p>
-        See also <LinkIntra location="services" text="services" />.
-      </p>
-
-      <ul>
-        <li>
-          <LinkIntra
-            location="approaches/systemic"
-            text="Συστημική ψυχοθεραπεία" />
-        </li>
-        <li>
-          <LinkIntra
-            location="approaches/dialectic"
-            text="Διαλεκτική συμπεριφορική" />
-        </li>
-      </ul>
-
-    </div>
-  </div>
+    <ul>
+      <li>
+        <LinkIntra
+          location="approaches/systemic"
+          text="Συστημική ψυχοθεραπεία" />
+      </li>
+      <li>
+        <LinkIntra
+          location="approaches/dialectic"
+          text="Διαλεκτική συμπεριφορική" />
+      </li>
+    </ul>
 
 </BaseLayout>

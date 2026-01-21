@@ -1,16 +1,21 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SitePage from "../../components/SitePage.astro";
 import { CONFIG } from "../../site-config";
 ---
 
 <BaseLayout title="Συστημική ψυχοθεραπεία" data-theme="theme-sage">
 
-  <div data-theme="theme-sage">
-    <h1>Systemic</h1>
-    <div class="card" data-theme="theme-floral">
-      <p>This is systemic page</p>
-    </div>
-  </div>
+  <SitePage
+    title="Συστημική ψυχοθεραπεία"
+    theme="theme-floral"
+  >
+    <p>
+      This is the systemic page.
+    </p>
+
+  </SitePage>
+
 
 </BaseLayout>
 

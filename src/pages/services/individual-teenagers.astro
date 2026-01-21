@@ -1,16 +1,20 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SitePage from "../../components/SitePage.astro";
 import { CONFIG } from "../../site-config";
 ---
 
 <BaseLayout title="Ατομική ψυχοθεραπεία εφήβων" data-theme="theme-sage">
 
-  <div data-theme="theme-sage">
-    <h1>Individual Teenagers Therapy</h1>
-    <div class="card" data-theme="theme-floral">
-      <p>This is individual teenagers therapy page</p>
-    </div>
-  </div>
+  <SitePage
+    title="Ατομική ψυχοθεραπεία εφήβων"
+    theme="theme-floral"
+  >
+    <p>
+      This is the individual teenagers therapy.
+    </p>
+
+  </SitePage>
 
 </BaseLayout>
 

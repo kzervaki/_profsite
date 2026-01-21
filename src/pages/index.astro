@@ -1,16 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SitePage from "../components/SitePage.astro";
 import { CONFIG } from "../site-config";
 ---
 
 <BaseLayout title="Αρχική" data-theme="theme-sage">
 
-  <div data-theme="theme-sage">
-    <h1>Home</h1>
-    <div class="card" data-theme="theme-floral">
-      <p>This is home page</p>
-    </div>
-  </div>
 
+  <SitePage
+    title="Αρχική"
+    theme="theme-floral"
+  >
+    <p>
+      This is index page.
+    </p>
+
+  </SitePage>
 </BaseLayout>
 

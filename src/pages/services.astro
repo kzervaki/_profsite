@@ -1,55 +1,55 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LinkIntra from "../components/LinkIntra.astro";
+import SitePage from "../components/SitePage.astro";
 import { CONFIG } from "../site-config";
 ---
 
 <BaseLayout title="Υπηρεσίες">
 
-  <div data-theme="theme-floral">
-    <h1>Services</h1>
+  <SitePage
+    title="Υπηρεσίες"
+    theme="theme-floral"
+  >
+    <p>
+      This is services page.
+    </p>
 
-    <div class="card" data-theme="theme-sage">
+    <p>
+      See also <LinkIntra location="approaches" text="approaches" />.
+    </p>
 
-      <p>This is services page</p>
-      <p>
-        See also <LinkIntra location="approaches" text="approaches" />.
-      </p>
-
-      <ul>
-        <li>
-          <LinkIntra
-            location="services/individual-adults"
-            text="Ατομική Ενηλίκων" />
-        </li>
-        <li>
-          <LinkIntra
-            location="services/individual-teenagers"
-            text="Ατομική Εφήβων" />
-        </li>
-        <li>
-          <LinkIntra
-            location="services/online-sessions"
-            text="Διαδικτυακές Συνεδρίες" />
-        </li>
-        <li>
-          <LinkIntra
-            location="services/couple-therapy"
-            text="Θεραπεία ζεύγους" />
-        </li>
-        <li>
-          <LinkIntra
-            location="services/family-therapy"
-            text="Θεραπεία οικογένειας" />
-        </li>
-        <li>
-          <LinkIntra
-            location="services/parents-counseling"
-            text="Συμβουλευτική Γονέων" />
-        </li>
-      </ul>
-
-    </div>
-  </div>
+    <ul>
+      <li>
+        <LinkIntra
+          location="services/individual-adults"
+          text="Ατομική Ενηλίκων" />
+      </li>
+      <li>
+        <LinkIntra
+          location="services/individual-teenagers"
+          text="Ατομική Εφήβων" />
+      </li>
+      <li>
+        <LinkIntra
+          location="services/online-sessions"
+          text="Διαδικτυακές Συνεδρίες" />
+      </li>
+      <li>
+        <LinkIntra
+          location="services/couple-therapy"
+          text="Θεραπεία ζεύγους" />
+      </li>
+      <li>
+        <LinkIntra
+          location="services/family-therapy"
+          text="Θεραπεία οικογένειας" />
+      </li>
+      <li>
+        <LinkIntra
+          location="services/parents-counseling"
+          text="Συμβουλευτική Γονέων" />
+      </li>
+    </ul>
 
 </BaseLayout>

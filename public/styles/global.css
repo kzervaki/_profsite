@@ -13,8 +13,10 @@
 
 @import "./site-header.css";
 @import "./site-nav.css";
+@import "./site-main.css";
+@import "./site-page.css";
 @import "./site-footer.css";
+
 @import "./link-active.css";
 @import "./link-intra.css";
-@import "./page-wrapper.css";
 @import "./contact-icon.css";

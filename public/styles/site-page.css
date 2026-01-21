@@ -1,0 +1,44 @@
+/* ==================================================
+   Site Page
+   ================================================== */
+
+.site-page {
+  /* Tunables */
+  --page-max-width: 100%;
+  --page-padding: 3.6rem;
+  --page-section-gap: 2rem;
+
+  /* Stretch */
+  flex: 1 1 auto;           /*  CRITICAL */
+  min-height: 100vh;        /*  CRITICAL: ensures fill */
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--page-section-gap);
+
+  padding: var(--page-padding);
+
+  min-width: 100vh;         /*  CRITICAL: ensures fill */
+  max-width: var(--page-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header */
+.site-page-header,
+.site-page-title {
+  margin: 0;
+}
+
+/* Image */
+.site-page-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Content grows naturally */
+.site-page-content {
+  flex: 0 0 auto;
+}
+
