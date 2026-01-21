@@ -1,0 +1,42 @@
+---
+import ContactDetails from "./ContactDetails.astro";
+import ContactForm from "./ContactForm.astro";
+import GoogleMap from "./GoogleMap.astro";
+import { CONFIG } from "../site-config"
+---
+
+<div>
+  <ContactDetails/>
+
+  <section>
+    <h3>Αποστολή Μηνύματος</h3>
+
+    <div class="contact-row">
+      <ContactForm
+        action="#"
+        width="100%"
+        height="100%"
+        maxWidth="500px"
+        rounded={true}
+        align="left"
+        buttonText="Αποστολή"
+        buttonWidth="120px"
+        buttonHeight="40px"
+        buttonBg="#5a7d8c"
+        buttonColor="#ffffff"
+        buttonFontSize="1rem"
+        buttonRounded={true}
+        buttonHoverBg="#48656f"
+      />
+
+      <GoogleMap
+        embedUrl={CONFIG.googleMapLocation}
+        width="350px"
+        height="250px"
+        rounded={true}
+        align="right"
+        class="my-4"
+      />
+    </div>
+  </section>
+</div>

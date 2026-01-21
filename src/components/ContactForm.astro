@@ -1,0 +1,65 @@
+---
+/**
+ * Props:
+ *  - action: string (form submit URL, default "#")
+ *  - width: string (form width, default "100%")
+ *  - maxWidth: string (default "500px")
+ *  - rounded: boolean (for inputs, default true)
+ *  - align: string ("left", "right", "center", default "center")
+ *  - class: string (extra classes)
+ *
+ *  -- Button customization --
+ *  - buttonText: string ("Send")
+ *  - buttonWidth: string (default "auto")
+ *  - buttonHeight: string (default "40px")
+ *  - buttonBg: string (default "#4a90e2")
+ *  - buttonColor: string (default "#fff")
+ *  - buttonFontSize: string (default "1rem")
+ *  - buttonRounded: boolean (default true)
+ *  - buttonHoverBg: string (default "#357ABD")
+ */
+const {
+  action = "#",
+  width = "100%",
+  maxWidth = "500px",
+  rounded = true,
+  align = "center",
+  class: extraClass = "",
+  buttonText = "Send",
+  buttonWidth = "auto",
+  buttonHeight = "40px",
+  buttonBg = "#4a90e2",
+  buttonColor = "#fff",
+  buttonFontSize = "1rem",
+  buttonRounded = true,
+  buttonHoverBg = "#357ABD"
+} = Astro.props;
+
+// Wrapper style for alignment
+let wrapperStyle = "";
+if (align === "left") wrapperStyle = `float: left; margin-right:1rem; margin-bottom:1rem; width:${width}; max-width:${maxWidth};`;
+else if (align === "right") wrapperStyle = `float: right; margin-left:1rem; margin-bottom:1rem; width:${width}; max-width:${maxWidth};`;
+else wrapperStyle = `display:block; margin:1rem auto; width:${width}; max-width:${maxWidth};`;
+
+let inputRadius = rounded ? "border-radius: 8px;" : "";
+let buttonRadius = buttonRounded ? "border-radius: 8px;" : "";
+---
+<form class={`contact-form ${extraClass}`} action={action} method="POST" style={wrapperStyle}>
+  <label for="name">Ονοματεπώνυμο</label>
+  <input type="text" id="name" name="name" required style={inputRadius} />
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required style={inputRadius} />
+
+  <label for="message">Μήνυμα</label>
+  <textarea id="message" name="message" rows="5" required style={inputRadius}></textarea>
+
+  <button
+    type="submit"
+    style={`width:${buttonWidth}; height:${buttonHeight}; background-color:${buttonBg}; color:${buttonColor}; font-size:${buttonFontSize}; border:none; cursor:pointer; ${buttonRadius}`}
+    onmouseover="this.style.backgroundColor='${buttonHoverBg}'"
+    onmouseout="this.style.backgroundColor='${buttonBg}'"
+  >
+    {buttonText}
+  </button>
+</form>

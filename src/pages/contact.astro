@@ -1,18 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SitePage from "../components/SitePage.astro";
+import ContactSection from "../components/ContactSection.astro";
 import { CONFIG } from "../site-config";
 ---
 
 <BaseLayout title="Επικοινωνία">
 
-  <SitePage
-    title="Επικοινωνία"
-  >
-    <p>
-      This is the contact page.
-    </p>
-
+  <SitePage title="Επικοινωνία">
+    <ContactSection/>
   </SitePage>
 
 </BaseLayout>
