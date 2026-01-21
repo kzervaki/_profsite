@@ -1,6 +1,160 @@
+/* ==================================================
+   Site Navigation — Drawer
+   ================================================== */
+
 .site-nav {
-  /* TODO */
-  margin: 0;
+  --nav-padding: 1rem 1.1rem 0.2rem; /* top left down*/
+  --nav-font-size: 1.1rem;
+
+  --burger-size: 2.25rem;
+  --drawer-width: 260px;
+
+  --nav-z-drawer: 30;
+  --nav-z-overlay: 20;
+
   position: sticky;
   top: 0;
+  z-index: 40;
+  padding: var(--nav-padding);
 }
+
+/* ---------- Layout ---------- */
+.nav-inner {
+  display: flex;
+  align-items: center;
+}
+
+/* ---------- Toggle ---------- */
+.nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- Burger ---------- */
+.nav-burger {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* ☰ → ✕ animation */
+.nav-burger span {
+  position: relative;
+  width: 1.5rem;
+  height: 2px;
+  background: currentColor;
+  transition: background 0.2s ease;
+}
+
+.nav-burger span::before,
+.nav-burger span::after {
+  content: "";
+  position: absolute;
+  width: 1.5rem;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.nav-burger span::before {
+  transform: translateY(-6px);
+}
+
+.nav-burger span::after {
+  transform: translateY(6px);
+}
+
+.nav-toggle:checked + .nav-burger span {
+  background: transparent;
+}
+
+.nav-toggle:checked + .nav-burger span::before {
+  transform: rotate(45deg);
+}
+
+.nav-toggle:checked + .nav-burger span::after {
+  transform: rotate(-45deg);
+}
+
+/* ---------- Drawer ---------- */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 2rem 1.5rem;
+  font-size: var(--nav-font-size);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: var(--drawer-width);
+
+  background: var(--surface-color);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+
+  z-index: var(--nav-z-drawer);
+  pointer-events: auto;
+}
+
+/* Slide-in */
+.nav-toggle:checked + .nav-burger + .nav-list {
+  transform: translateX(0);
+}
+
+/* ---------- Overlay ---------- */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+
+  z-index: var(--nav-z-overlay);
+}
+
+.nav-toggle:checked ~ .nav-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---------- Links ---------- */
+.site-nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 769px) {
+  .nav-burger,
+  .nav-overlay {
+    display: none;
+  }
+
+  .nav-list {
+    position: static;
+    height: auto;
+    width: auto;
+
+    flex-direction: row;
+    padding: 0;
+
+    transform: none;
+    background: none;
+
+    z-index: auto;
+  }
+}
+

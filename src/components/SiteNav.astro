@@ -1,27 +1,38 @@
 ---
-import { CONFIG } from "../site-config";
 import LinkActive from "../components/LinkActive.astro";
 ---
 
-
 <nav class="site-nav" data-theme="theme-sage">
-  <p>This is nav bar</p>
+  <div class="nav-inner">
+    <!-- Toggle -->
+    <input
+      type="checkbox"
+      id="nav-toggle"
+      class="nav-toggle"
+      aria-hidden="true"
+    />
 
-  <ul>
-    <li>
-      <LinkActive location="" text="Home" />
-    </li>
-    <li>
-      <LinkActive location="approaches" text="Approaches" />
-    </li>
-    <li>
-      <LinkActive location="services" text="Services" />
-    </li>
-    <li>
-      <LinkActive location="about" text="About" />
-    </li>
-    <li>
-      <LinkActive location="contact" text="Contact" />
-    </li>
-  </ul>
+    <!-- Burger button -->
+    <label
+      for="nav-toggle"
+      class="nav-burger"
+      aria-label="Open navigation"
+      aria-controls="site-navigation"
+    >
+      <span></span>
+    </label>
+
+    <!-- Navigation drawer / bar -->
+    <ul class="nav-list" id="site-navigation">
+      <li><LinkActive location="" text="Home" /></li>
+      <li><LinkActive location="approaches" text="Approaches" /></li>
+      <li><LinkActive location="services" text="Services" /></li>
+      <li><LinkActive location="about" text="About" /></li>
+      <li><LinkActive location="contact" text="Contact" /></li>
+    </ul>
+
+    <!-- Overlay -->
+    <div class="nav-overlay"></div>
+  </div>
 </nav>
+
