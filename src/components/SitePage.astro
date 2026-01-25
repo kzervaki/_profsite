@@ -12,12 +12,6 @@ const { title, image, theme } = Astro.props;
   class="site-page"
   {...(theme ? { "data-theme": theme } : {})}
 >
-  {image && (
-    <div class="site-page-image">
-      <img src={image} alt="" />
-    </div>
-  )}
-
   {title && (
     <header class="site-page-header">
       <h1 class="site-page-title">{title}</h1>

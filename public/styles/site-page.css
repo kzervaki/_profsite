@@ -31,13 +31,6 @@
   margin: 0;
 }
 
-/* Image */
-.site-page-image img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
 /* Content grows naturally */
 .site-page-content {
   flex: 0 0 auto;

@@ -1,0 +1,57 @@
+/* Base desktop styles */
+.text-with-image {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  gap: var(--image-margin, 1rem);
+}
+
+.text-wrapper {
+  flex: 1;
+  min-width: 0; /* Fixes flexbox overflow issues */
+}
+
+.image-side {
+  flex-shrink: 0;
+  max-width: 40%;
+  overflow: hidden; /* For rounded corners */
+  border-radius: var(--border-radius, 0);
+}
+
+/* Image on left side */
+.text-with-image .image-left {
+  order: 1;
+}
+
+/* Image on right side */
+.text-with-image .image-right {
+  order: 2;
+}
+
+/* When image is on right, text comes first */
+.text-with-image .image-right + .text-wrapper {
+  order: 1;
+}
+
+.text-with-image .image-left ~ .text-wrapper {
+  order: 2;
+}
+
+@media (max-width: 768px) {
+  .text-with-image {
+    flex-direction: column;
+    align-items: var(--text-alignment, flex-start);
+    gap: var(--mobile-spacing, 1.5rem);
+  }
+
+  .image-side {
+    max-width: var(--mobile-image-width, 75%) !important;
+    width: var(--mobile-image-width, 75%) !important;
+    order: 1 !important;
+  }
+
+  .text-wrapper {
+    order: 2 !important;
+    width: 100% !important;
+  }
+}
