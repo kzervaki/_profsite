@@ -18,7 +18,7 @@
 
   /* Links */
   --theme-link-color: hsl(120 10% 97%);          /* matches text */
-  --theme-link-hover-color: hsl(120 5% 28%);     /* darker grey hover for contrast */
+  --theme-link-hover-color: hsl(120 5% 42%);     /* darker grey hover for contrast */
   --theme-link-active-color: hsl(120 8% 25%);    /* slightly darker active */
   --theme-link-underline: none;
 }
