@@ -8,9 +8,9 @@
   --page-padding: 3.6rem;
   --page-section-gap: 2rem;
 
-  /* Stretch (DESKTOP INTENT PRESERVED) */
-  flex: 1 1 auto;            /* CRITICAL */
-  min-height: 100vh;         /* CRITICAL */
+  /* Stretch */
+  flex: 1 1 auto;
+  min-height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -18,7 +18,8 @@
 
   padding: var(--page-padding);
 
-  min-width: 100vh;          /* CRITICAL (desktop only) */
+  /* Width behavior — FIXED */
+  width: 100%;
   max-width: var(--page-max-width);
 
   margin-left: auto;
@@ -44,7 +45,6 @@
   .site-page {
     /* Remove viewport coupling on mobile */
     min-height: auto;
-    min-width: auto;
 
     /* Tighter spacing */
     --page-padding: 1.25rem;
