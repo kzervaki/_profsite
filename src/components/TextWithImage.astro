@@ -18,7 +18,7 @@ const {
   imagePosition = 'top-right',
   textAlignment = 'left',
   imageMargin = '1rem',
-  imageWidth = 'auto',
+  imageWidth = '300px',
   imageHeight = 'auto',
   roundedCorners = false,
   mobileSpacing = '1.5rem',
@@ -26,15 +26,15 @@ const {
 } = Astro.props;
 
 // Calculate border radius
-const borderRadius = typeof roundedCorners === 'string' 
-  ? roundedCorners 
+const borderRadius = typeof roundedCorners === 'string'
+  ? roundedCorners
   : (roundedCorners ? '0.5rem' : '0');
 
 // Determine if image is on left or right side
 const isImageLeft = imagePosition.includes('left');
 ---
 
-<div 
+<div
   class="text-with-image"
   style={`
     --mobile-spacing: ${mobileSpacing};
@@ -46,24 +46,25 @@ const isImageLeft = imagePosition.includes('left');
   `}
 >
   {imageSrc && (
-    <div 
+    <div
       class="image-side"
       style={`
         border-radius: ${borderRadius};
         overflow: hidden;
+        width: ${imageWidth};
       `}
     >
       <img
         src={imageSrc}
         alt={imageAlt}
-        width={imageWidth}
+        width="100%"
         height={imageHeight}
         style="max-width: 100%; height: auto; display: block;"
       />
     </div>
   )}
 
-  <div 
+  <div
     class="text-wrapper"
     style={`text-align: ${textAlignment}; overflow-wrap: break-word; word-wrap: break-word; hyphens: auto;`}
   >
@@ -113,7 +114,6 @@ const isImageLeft = imagePosition.includes('left');
   }
 
   .image-side {
-    max-width: 40%;
     border-radius: var(--border-radius, 0);
     overflow: hidden;
   }
