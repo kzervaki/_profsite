@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SitePage from "../../components/SitePage.astro";
+import QuoteBlock from "../../components/QuoteBlock.astro";
 import TextWithImage from '../../components/TextWithImage.astro';
 import { CONFIG } from "../../site-config";
 ---
@@ -10,6 +11,16 @@ import { CONFIG } from "../../site-config";
   <SitePage
     title="Ατομική ψυχοθεραπεία εφήβων"
   >
+
+    <QuoteBlock
+      author="Erikson, 1968"
+      position="right"
+      align="right"
+      edgeMargin="0.0rem"
+      size="md"
+    >
+      «Η οικογένεια αποτελεί τη βασική μονάδα συναισθηματικής λειτουργίας.»
+    </QuoteBlock>
 
     <TextWithImage
       imageSrc=`${import.meta.env.BASE_URL}/images/texture-5.jpg`

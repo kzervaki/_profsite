@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SitePage from "../../components/SitePage.astro";
+import QuoteBlock from "../../components/QuoteBlock.astro";
 import TextWithImage from '../../components/TextWithImage.astro';
 import { CONFIG } from "../../site-config";
 ---
@@ -10,6 +11,16 @@ import { CONFIG } from "../../site-config";
   <SitePage
     title="Διαλεκτική συμπεριφορική ψυχοθεραπεία"
   >
+
+    <QuoteBlock
+      author="Linehan, 1933"
+      position="left"
+      align="left"
+      edgeMargin="0.0rem"
+      size="md"
+    >
+      «Η πιο ουσιαστική μορφή φροντίδας προς έναν άνθρωπο είναι να τον βοηθήσεις να μάθει πώς να ρυθμίζει τα συναισθήματά του.»
+    </QuoteBlock>
 
     <TextWithImage
       imageSrc=`${import.meta.env.BASE_URL}/images/composition-4.jpg`
