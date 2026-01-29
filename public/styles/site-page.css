@@ -4,7 +4,7 @@
 
 .site-page {
   /* Tunables */
-  --page-max-width: 100%;
+  --page-max-width: 1200px;
   --page-padding: 3.6rem;
   --page-section-gap: 2rem;
 
