@@ -2,7 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LinkIntra from "../components/LinkIntra.astro";
 import SitePage from "../components/SitePage.astro";
+import GridVertical from "../components/GridVertical.astro";
+import CellContent from "../components/CellContent.astro";
 import { CONFIG } from "../site-config";
+
+const baseUrl = import.meta.env.BASE_URL || '/';
 ---
 
 <BaseLayout title="Υπηρεσίες">
@@ -10,45 +14,98 @@ import { CONFIG } from "../site-config";
   <SitePage
     title="Υπηρεσίες"
   >
-    <p>
-      This is services page.
-    </p>
 
     <p>
-      See also <LinkIntra location="approaches" text="approaches" />.
+      Όλες οι προσφερόμενες υπηρεσίες, καθώς και η διάρθρωση των σχετικών συνεδριών,
+      διέπονται με συνέπεια από τις
+      <LinkIntra location="approaches" text="θεραπευτικές προσεγγίσεις" />
+      που ακολουθώ.
     </p>
 
-    <ul>
-      <li>
-        <LinkIntra
-          location="services/individual-adults"
-          text="Ατομική Ενηλίκων" />
-      </li>
-      <li>
-        <LinkIntra
-          location="services/individual-teenagers"
-          text="Ατομική Εφήβων" />
-      </li>
-      <li>
-        <LinkIntra
-          location="services/online-sessions"
-          text="Διαδικτυακές Συνεδρίες" />
-      </li>
-      <li>
-        <LinkIntra
-          location="services/couple-therapy"
-          text="Θεραπεία ζεύγους" />
-      </li>
-      <li>
-        <LinkIntra
-          location="services/family-therapy"
-          text="Θεραπεία οικογένειας" />
-      </li>
-      <li>
-        <LinkIntra
-          location="services/parents-counseling"
-          text="Συμβουλευτική Γονέων" />
-      </li>
-    </ul>
+    <GridVertical
+      size="90vmin" padding="1rem" lineWidth="2.2px"
+    >
+      <img slot="A" src=`${import.meta.env.BASE_URL}/images/composition-3.jpg` />
+
+      <div slot="B">
+        <CellContent
+          title="Ατομική Ενηλίκων"
+          href=`${baseUrl}/services/individual-adults`}
+        >
+          Δομημένος χώρος διερεύνησης των σκέψεων,
+          των συναισθημάτων και των βιωμάτων του ώριμου ατόμου. Στο επίκεντρο
+          βρίσκεται η μοναδική προσωπική ιστορία κάθε ανθρώπου,
+          καθώς και ο τρόπος με τον οποίο οι εμπειρίες ζωής, οι σχέσεις και
+          τα εσωτερικά μοτίβα επηρεάζουν τη σημερινή του λειτουργικότητα.
+        </CellContent>
+      </div>
+
+      <div slot="C">
+        <CellContent
+          title="Ατομική Εφήβων"
+          href=`${baseUrl}/services/individual-teenagers`}
+        >
+          Ασφαλής χώρος έκφρασης και κατανόησης εαυτού σε μια ιδιαίτερα κρίσιμη
+          αναπτυξιακή φάση του ατόμου. Στοχεύει στη στήριξη του εφήβου,
+          ενισχύοντας την ψυχική του ανθεκτικότητα και τη σταδιακή του αυτονόμηση
+          μέσα σε καταστάσεις έντονων συναισθηματικών μεταβολών και αναζήτησης
+          ταυτότητας.
+        </CellContent>
+      </div>
+
+      <div slot="D">
+        <CellContent
+          title="Διαδικτυακές συνεδρίες"
+          href=`${baseUrl}/services/online-sessions`}
+        >
+          Υποστήριξη και θεραπεία μέσω βιντεοκλήσεων, ειδικών εφαρμογών
+          ή κρυπτογραφημένης επικοινωνίας. Παρέχεται σε περιπτώσεις όπου
+          η φυσική παρουσία είναι δύσκολη ή ανέφικτη, ή όποτε κάποιο άτομο
+          νιώθει πιο άνετα να ξεκινήσει θεραπεία από τον προσωπικό του χώρο. 
+          Πραγματοποιούνται με τον ίδιο τρόπο όπως οι παραδοσιακές συνεδρίες
+        </CellContent>
+      </div>
+
+      <div slot="E">
+        <CellContent
+          title="Θεραπεία ζεύγους"
+          href=`${baseUrl}/services/couple-therapy`}
+        >
+          Υποστηρικτικό και μη επικριτικό πλαίσιο εξερεύνησης της σχέσης του
+          ζεύγους και αμοιβαίας κατανόησης των μοτίβων επικοινωνίας. Η σχέση
+          δεν εξετάζεται απομονωμένα, αλλά ως μέρος ενός ευρύτερου συστήματος
+          –οικογένειας, κοινωνικού περιβάλλοντος και προσωπικού ιστορικού–
+          όπου κάθε μέλος επηρεάζει και επηρεάζεται από τους υπόλοιπους.
+        </CellContent>
+      </div>
+
+      <div slot="F">
+        <CellContent
+          title="Θεραπεία οικογένειας"
+          href=`${baseUrl}/services/family-therapy`}
+        >
+          Δομημένος χώρος αμοιβαίας διερεύνησης των σχέσεων και
+          αλληλοκατανόησης μεταξύ των μελών της οικογένειας.
+          Στόχος είναι να ενισχυθεί η επικοινωνία, η συναισθηματική σύνδεση και
+          η συνολική ισορροπία του οικογενειακού συστήματος, πέρα από την
+          αντιμετώπιση μόνο μεμονωμένων προβλημάτων ή προβληματικών
+          συμπεριφορών.
+        </CellContent>
+      </div>
+
+      <div slot="G">
+        <CellContent
+          title="Συμβουλευτική Γονέων"
+          href=`${baseUrl}/services/parents-counseling`}
+        >
+          Υποστηρικτικό πλαίσιο επεξεργασίας των προκλήσεων της γονεϊκότητας
+          και καλύτερης κατανόησης των αναγκών των παιδιών.
+          Η διαδικασία αυτή δεν επικεντρώνεται σε «σωστούς» ή «λάθους» τρόπους
+          ανατροφής, αλλά στην κατανόηση των μοναδικών δυναμικών που διαμορφώνουν την
+          επικοινωνία και τη λειτουργικότητα της κάθε οικογένειας.
+        </CellContent>
+      </div>
+
+    </GridVertical>
 
 </BaseLayout>

@@ -1,0 +1,93 @@
+.cell {
+  background: transparent; /* TRUE transparency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box; /* Include padding in dimensions */
+  cursor: default;
+}
+
+/* Make cells with links have pointer cursor */
+.cell:has(.cell-link) {
+  cursor: pointer;
+}
+
+/* Images fill cells */
+.cell > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text content container styling */
+.cell > *:not(img) {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text styling for regular content (not using CellContent component) */
+.cell :where(p, span, div:not(.cell-content, .cell-static, .cell-link)) {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 100%;
+}
+
+/* Special handling for cell A which is larger on desktop */
+.a > *:not(img) {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+/* ---------- Placement ---------- */
+.a { grid-column: 1; grid-row: 1 / 4; }
+
+.b { grid-column: 2; grid-row: 1; }
+.c { grid-column: 3; grid-row: 1; }
+
+.d { grid-column: 2; grid-row: 2; }
+.e { grid-column: 3; grid-row: 2; }
+
+.f { grid-column: 2; grid-row: 3; }
+.g { grid-column: 3; grid-row: 3; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  .grid-vertical {
+    aspect-ratio: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    max-width: 100%;
+
+    /* Update background for mobile layout (2 columns) */
+    background:
+      linear-gradient(currentColor, currentColor) top / 100% var(--gv-line-width) no-repeat,
+      linear-gradient(currentColor, currentColor) bottom / 100% var(--gv-line-width) no-repeat,
+      linear-gradient(currentColor, currentColor) left / var(--gv-line-width) 100% no-repeat,
+      linear-gradient(currentColor, currentColor) right / var(--gv-line-width) 100% no-repeat,
+      /* Only one vertical interior line between col 1 & 2 */
+      linear-gradient(currentColor, currentColor) 50% 0 / var(--gv-line-width) 100% no-repeat,
+      /* Two horizontal interior lines for 3 rows */
+      linear-gradient(currentColor, currentColor) 0 calc(33.33% - var(--gv-line-width) / 2) / 100% var(--gv-line-width) no-repeat,
+      linear-gradient(currentColor, currentColor) 0 calc(66.66% - var(--gv-line-width) / 2) / 100% var(--gv-line-width) no-repeat;
+  }
+
+  .a { display: none; }
+
+  .b, .d, .f { grid-column: 1; }
+  .c, .e, .g { grid-column: 2; }
+
+  /* For regular text content on mobile, show full content */
+  .cell :where(p, span, div:not(.cell-content, .cell-static, .cell-link)) {
+    font-size: clamp(0.75rem, 3vw, 0.9rem);
+  }
+
+}
