@@ -1,19 +1,17 @@
 .cell {
-  background: transparent; /* TRUE transparency */
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-sizing: border-box; /* Include padding in dimensions */
+  box-sizing: border-box;
   cursor: default;
 }
 
-/* Make cells with links have pointer cursor */
 .cell:has(.cell-link) {
   cursor: pointer;
 }
 
-/* Images fill cells */
 .cell > img {
   width: 100%;
   height: 100%;
@@ -21,45 +19,25 @@
   display: block;
 }
 
-/* Text content container styling */
 .cell > *:not(img) {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-/* Text styling for regular content (not using CellContent component) */
-.cell :where(p, span, div:not(.cell-content, .cell-static, .cell-link)) {
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
-  line-height: 1.4;
-  text-align: center;
-  margin: 0;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  width: 100%;
-}
-
-/* Special handling for cell A which is larger on desktop */
-.a > *:not(img) {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-}
-
-/* ---------- Placement ---------- */
+/* Placement (unchanged) */
 .a { grid-column: 1; grid-row: 1 / 4; }
-
 .b { grid-column: 2; grid-row: 1; }
 .c { grid-column: 3; grid-row: 1; }
-
 .d { grid-column: 2; grid-row: 2; }
 .e { grid-column: 3; grid-row: 2; }
-
 .f { grid-column: 2; grid-row: 3; }
 .g { grid-column: 3; grid-row: 3; }
 
-/* ---------- Mobile ---------- */
+/* ================= Mobile ONLY ================= */
+
 @media (max-width: 768px) {
   .grid-vertical {
     aspect-ratio: auto;
@@ -95,5 +73,26 @@
   /* For regular text content on mobile, show full content */
   .cell :where(p, span, div:not(.cell-content, .cell-static, .cell-link)) {
     font-size: clamp(0.75rem, 3vw, 0.9rem);
+  }
+  
+  .cell-body {
+    font-size: 0.8em;
+    line-height: 1.3;
+
+    /* Clamp text without affecting layout */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* ~50–75% depending on content */
+    overflow: hidden;
+  }
+
+  .cell-title {
+    font-size: 0.9em;
+    margin-bottom: 0.25rem;
+  }
+
+  .cell-link,
+  .cell-static {
+    padding: 0.5rem;
   }
 }
