@@ -6,9 +6,10 @@ import { CONFIG } from "../site-config"
 
 interface Props {
   title?: string;   // optional manual override
+  faviconSize?: string; // optional favicon size
 }
 
-const { title } = Astro.props;
+const { title, faviconSize = "32x32" } = Astro.props;
 
 const segments = Astro.url.pathname
   .split("/")
@@ -27,6 +28,8 @@ const pageSuffix = title || breadcrumbTitle;
 const pageTitle = pageSuffix
   ? `${pageSuffix} · ${CONFIG.fullName} – ${CONFIG.profession}`
   : `${CONFIG.fullName} – ${CONFIG.profession}`;
+
+const logoSrc = `${import.meta.env.BASE_URL}/images/logo-konna.png`;
 ---
 
 <!DOCTYPE html>
@@ -36,6 +39,7 @@ const pageTitle = pageSuffix
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
+    <link rel="icon" href={logoSrc} sizes={faviconSize} />
 
     <!-- Global styles -->
     <link rel="stylesheet" href={`${import.meta.env.BASE_URL}/styles/global.css`}>
@@ -43,7 +47,7 @@ const pageTitle = pageSuffix
 
   <body>
     <SiteHeader
-      logoSrc=`${import.meta.env.BASE_URL}/images/logo-sample.jpg`
+      logoSrc={logoSrc}
     />
     <SiteNav />
 
@@ -57,4 +61,3 @@ const pageTitle = pageSuffix
   </body>
 
 </html>
-

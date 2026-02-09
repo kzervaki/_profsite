@@ -5,14 +5,14 @@
 .site-header {
   --header-max-width: var(--layout-main-max-width, 900px);
 
-  --header-padding-y: 2rem;
+  --header-padding-y: 0rem;
   --header-padding-x: 1rem;
-  --header-gap: 1.5rem;
 
-  --header-logo-size: 96px;
+  --header-gap: 1.2rem;
+  --header-logo-size: 190px;
 
-  --header-title-size: 2.5rem;
-  --header-subtitle-size: 1.1rem;
+  --header-title-size: 2.6rem;
+  --header-subtitle-size: 1.4rem;
 
   margin: 0;
 }
@@ -80,10 +80,11 @@
 
 @media (max-width: 768px) {
   .site-header {
-    --header-padding-y: 1rem;
-    --header-logo-size: 48px;
-    --header-title-size: 1.4rem;
-    --header-subtitle-size: 0.9rem;
+    --header-padding-y: 2rem;
+    --header-padding-y: 2rem;
+    --header-logo-size: 120px;
+    --header-title-size: 1.8rem;
+    --header-subtitle-size: 1.2rem;
   }
 
   .site-header-inner {
