@@ -10,13 +10,20 @@
   position: sticky;
   top: 0;
   z-index: 40;
-  padding: 0.5rem 1rem;
+
+  /* Height and centering adjustments */
+  display: flex;
+  align-items: center;
+  min-height: 80px; /* Adjust this value to change navbar height */
+  padding: 0 2rem; /* Remove vertical padding, use min-height instead */
 }
 
 /* ---------- Layout ---------- */
 .nav-inner {
   display: flex;
   align-items: center;
+  width: 100%;
+  height: 100%;
   position: relative;
 }
 
@@ -36,7 +43,12 @@
   justify-content: center;
   cursor: pointer;
   position: relative;
-  z-index: 50; /* always above drawer */
+  z-index: 50;
+
+  /* Perfect centering */
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
 
 /* ☰ → ✕ */
@@ -82,23 +94,22 @@
 
   position: fixed;
   top: 0;
-  right: 0;                 /* slide from right */
+  right: 0;
   height: 100vh;
   width: var(--drawer-width);
-
-  /* Transparent background */
-  background: rgba(255, 255, 255, 0.0); /* fully transparent */
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  transform: translateX(100%); /* hidden initially to the right */
-  transition: transform 0.35s ease;
-  z-index: 40;
 
   /* Transparency effect */
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(2px);
+
+  /* Mobile menu spacing - INCREASED GAP */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Increased from 1rem to 2rem */
+
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  z-index: 40;
 }
 
 /* Slide-in */
@@ -113,16 +124,21 @@
   right: 0;
   top: 0;
   bottom: 0;
-
   background: rgba(0, 0, 0, 0.4);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
+  z-index: 30;
 }
 
 .nav-toggle:checked ~ .nav-overlay {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* Prevent body scroll when mobile menu open */
+body:has(.nav-toggle:checked) {
+  overflow: hidden;
 }
 
 /* ---------- Desktop ---------- */
@@ -132,14 +148,46 @@
     display: none;
   }
 
+  body:has(.nav-toggle:checked) {
+    overflow: auto;
+  }
+
   .nav-list {
     position: static;
-    height: auto;
+    height: 100%; /* Take full height of navbar */
     width: auto;
     padding: 0;
 
+    /* Horizontal layout with centering */
     flex-direction: row;
+    align-items: center; /* Vertical centering */
+    gap: 2.5rem; /* Space between desktop menu items */
     transform: none;
     background: none;
+    backdrop-filter: none;
+  }
+
+  /* Center each list item vertically */
+  .nav-list li {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+  }
+
+  /* Style the links for perfect centering */
+  .nav-list a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    line-height: 1;
+    padding: 0 0.25rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Optional: Add hover effect */
+  .nav-list a:hover {
+    opacity: 0.8;
   }
 }

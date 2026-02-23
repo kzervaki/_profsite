@@ -4,7 +4,6 @@ import LinkActive from "../components/LinkActive.astro";
 
 <nav class="site-nav" data-theme="theme-sage">
   <div class="nav-inner">
-    <!-- Toggle -->
     <input
       type="checkbox"
       id="nav-toggle"
@@ -12,17 +11,16 @@ import LinkActive from "../components/LinkActive.astro";
       aria-hidden="true"
     />
 
-    <!-- Burger button -->
     <label
       for="nav-toggle"
       class="nav-burger"
       aria-label="Open navigation"
       aria-controls="site-navigation"
+      aria-expanded="false"
     >
       <span></span>
     </label>
 
-    <!-- Navigation drawer / bar -->
     <ul class="nav-list" id="site-navigation" data-theme="theme-sage">
       <li><LinkActive location="" text="Αρχική" /></li>
       <li><LinkActive location="approaches" text="Προσεγγίσεις" /></li>
@@ -31,7 +29,33 @@ import LinkActive from "../components/LinkActive.astro";
       <li><LinkActive location="contact" text="Επικοινωνία" /></li>
     </ul>
 
-    <!-- Overlay -->
     <div class="nav-overlay"></div>
   </div>
 </nav>
+
+<script>
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.querySelectorAll('.nav-list a');
+  const navLabel = document.querySelector('.nav-burger');
+
+  if (navToggle && navLinks.length) {
+    // Update aria-expanded when menu toggles
+    navToggle.addEventListener('change', (e) => {
+      if (navLabel) {
+        navLabel.setAttribute('aria-expanded', e.target.checked);
+      }
+    });
+
+    // Close menu when clicking a link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 769) {
+          navToggle.checked = false;
+          if (navLabel) {
+            navLabel.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
+  }
+</script>
