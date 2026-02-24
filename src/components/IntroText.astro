@@ -8,11 +8,20 @@ export interface Props {
   bottomText?: string;
   textAlignment?: 'left' | 'center' | 'right' | 'justify';
   imageMargin?: string;
+  // Individual image size controls
+  topImageWidth?: string;
+  topImageHeight?: string;
+  bottomImageWidth?: string;
+  bottomImageHeight?: string;
+  // Fallback sizes if individual not specified
   imageWidth?: string;
   imageHeight?: string;
   roundedCorners?: boolean | string;
   mobileSpacing?: string;
   mobileImageWidth?: string;
+  // Individual mobile image size controls
+  topMobileImageWidth?: string;
+  bottomMobileImageWidth?: string;
   gap?: string;
 }
 
@@ -25,17 +34,36 @@ const {
   bottomText,
   textAlignment = 'left',
   imageMargin = '1rem',
+  // Individual image sizes (take precedence)
+  topImageWidth,
+  topImageHeight,
+  bottomImageWidth,
+  bottomImageHeight,
+  // Fallback sizes
   imageWidth = '200px',
   imageHeight = 'auto',
   roundedCorners = false,
   mobileSpacing = '1.5rem',
   mobileImageWidth = '50%',
+  // Individual mobile image sizes
+  topMobileImageWidth,
+  bottomMobileImageWidth,
   gap = '2rem'
 } = Astro.props;
 
 const borderRadius = typeof roundedCorners === 'string'
   ? roundedCorners
   : (roundedCorners ? '0.5rem' : '0');
+
+// Determine actual sizes to use (individual prop > fallback)
+const actualTopImageWidth = topImageWidth || imageWidth;
+const actualTopImageHeight = topImageHeight || imageHeight;
+const actualBottomImageWidth = bottomImageWidth || imageWidth;
+const actualBottomImageHeight = bottomImageHeight || imageHeight;
+
+// Mobile sizes
+const actualTopMobileWidth = topMobileImageWidth || mobileImageWidth;
+const actualBottomMobileWidth = bottomMobileImageWidth || mobileImageWidth;
 ---
 
 <div
@@ -44,12 +72,19 @@ const borderRadius = typeof roundedCorners === 'string'
   style={`
     --image-margin: ${imageMargin};
     --border-radius: ${borderRadius};
-    --image-width: ${imageWidth};
-    --image-height: ${imageHeight};
-    --mobile-spacing: ${mobileSpacing};
-    --mobile-image-width: ${mobileImageWidth};
     --text-alignment: ${textAlignment};
     --gap: ${gap};
+    --mobile-spacing: ${mobileSpacing};
+    
+    /* Top image sizes */
+    --top-image-width: ${actualTopImageWidth};
+    --top-image-height: ${actualTopImageHeight};
+    --top-mobile-image-width: ${actualTopMobileWidth};
+    
+    /* Bottom image sizes */
+    --bottom-image-width: ${actualBottomImageWidth};
+    --bottom-image-height: ${actualBottomImageHeight};
+    --bottom-mobile-image-width: ${actualBottomMobileWidth};
   `}
 >
   <!-- Top Row: Image (top-right) and Text (top-left) -->
@@ -69,7 +104,7 @@ const borderRadius = typeof roundedCorners === 'string'
           loading="lazy"
           style={{
             width: '100%',
-            height: imageHeight,
+            height: 'var(--top-image-height)',
             objectFit: 'cover',
             display: 'block'
           }}
@@ -88,7 +123,7 @@ const borderRadius = typeof roundedCorners === 'string'
           loading="lazy"
           style={{
             width: '100%',
-            height: imageHeight,
+            height: 'var(--bottom-image-height)',
             objectFit: 'cover',
             display: 'block'
           }}

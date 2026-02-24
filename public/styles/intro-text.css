@@ -38,10 +38,17 @@
   line-height: 1.6;
 }
 
-/* Image container styles */
-.image-container {
+/* Image container styles - using individual image variables */
+.top-image {
   flex-shrink: 0;
-  width: var(--image-width, 200px);
+  width: var(--top-image-width, 200px);
+  border-radius: var(--border-radius, 0);
+  overflow: hidden;
+}
+
+.bottom-image {
+  flex-shrink: 0;
+  width: var(--bottom-image-width, 200px);
   border-radius: var(--border-radius, 0);
   overflow: hidden;
 }
@@ -77,30 +84,55 @@
     gap: var(--mobile-spacing, 1.5rem);
   }
 
-  /* Reset order for mobile */
-  .top-image,
-  .top-text,
-  .bottom-image,
-  .bottom-text {
-    order: 0;
+  /* Mobile stacking order:
+     1. Top text
+     2. Top image
+     3. Bottom text
+     4. Bottom image
+  */
+
+  /* Top row elements */
+  .top-text {
+    order: 1 !important;
   }
 
-  /* Image container mobile adjustments */
-  .image-container {
-    width: var(--mobile-image-width, 50%) !important;
-    max-width: var(--mobile-image-width, 50%) !important;
+  .top-image {
+    order: 2 !important;
+  }
+
+  /* Bottom row elements */
+  .bottom-text {
+    order: 3 !important;
+  }
+
+  .bottom-image {
+    order: 4 !important;
+  }
+
+  /* Individual image mobile widths */
+  .top-image {
+    width: var(--top-mobile-image-width, 50%) !important;
+    max-width: var(--top-mobile-image-width, 50%) !important;
+  }
+
+  .bottom-image {
+    width: var(--bottom-mobile-image-width, 50%) !important;
+    max-width: var(--bottom-mobile-image-width, 50%) !important;
   }
 
   /* Align images based on text alignment */
-  .intro-text[data-text-alignment="center"] .image-container {
+  .intro-text[data-text-alignment="center"] .top-image,
+  .intro-text[data-text-alignment="center"] .bottom-image {
     margin: 0 auto;
   }
 
-  .intro-text[data-text-alignment="right"] .image-container {
+  .intro-text[data-text-alignment="right"] .top-image,
+  .intro-text[data-text-alignment="right"] .bottom-image {
     margin-left: auto;
   }
 
-  .intro-text[data-text-alignment="left"] .image-container {
+  .intro-text[data-text-alignment="left"] .top-image,
+  .intro-text[data-text-alignment="left"] .bottom-image {
     margin-right: auto;
   }
 
@@ -120,19 +152,9 @@
   }
 }
 
-/* Optional: Add some visual distinction between rows */
-.intro-text .row:first-child {
-  padding-bottom: calc(var(--gap, 2rem) / 2);
-}
-
+/* Remove any borders or separators between rows */
+.intro-text .row:first-child,
 .intro-text .row:last-child {
-  padding-top: calc(var(--gap, 2rem) / 2);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .intro-text .row:last-child {
-    border-top-color: rgba(255, 255, 255, 0.1);
-  }
+  padding: 0;
+  border: none;
 }
