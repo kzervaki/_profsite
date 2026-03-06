@@ -37,18 +37,30 @@
 }
 
 @media (max-width: 768px) {
+  /* CHANGED: Mobile styles - image stretches full width, always on top */
   .text-with-image {
     flex-direction: column;
-    align-items: var(--text-alignment, flex-start);
+    align-items: stretch; /* Changed from var(--text-alignment) */
     gap: var(--mobile-spacing, 1.5rem);
   }
 
+  /* CHANGED: Image takes full width, always on top */
   .image-side {
-    max-width: var(--mobile-image-width, 75%) !important;
-    width: var(--mobile-image-width, 75%) !important;
+    width: 100% !important; /* Changed from var(--mobile-image-width) */
+    max-width: 100% !important; /* Changed from var(--mobile-image-width) */
     order: 1 !important;
   }
 
+  /* Image should cover width proportionally */
+  .image-side img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+  }
+
+  /* REMOVED: All image alignment rules (margin-left/right auto) */
+
+  /* CHANGED: Text always after image */
   .text-wrapper {
     order: 2 !important;
     width: 100% !important;

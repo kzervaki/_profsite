@@ -132,38 +132,42 @@ const isImageLeft = imagePosition.includes('left');
   }
 
   @media (max-width: 768px) {
-    /* Mobile responsive styles */
+    /* Mobile responsive styles - CHANGED: Image stretches to full width */
     .text-with-image {
       display: flex;
       flex-direction: column;
-      align-items: var(--text-alignment, flex-start);
+      align-items: stretch; /* Changed from var(--text-alignment) to stretch */
       gap: var(--mobile-spacing, 1.5rem);
     }
 
+    /* CHANGED: Image stretches to full container width */
     .image-side {
-      max-width: var(--mobile-image-width, 75%) !important;
-      width: var(--mobile-image-width, 75%) !important;
+      width: 100% !important; /* Changed from var(--mobile-image-width) */
+      max-width: 100% !important; /* Changed from var(--mobile-image-width) */
       grid-column: 1 !important;
       grid-row: 1 !important;
     }
 
-    /* Align image based on text alignment */
-    .text-with-image[style*="--text-alignment: center"] .image-side {
-      margin: 0 auto !important;
+    /* REMOVED: Image alignment rules based on text alignment - no longer needed */
+
+    /* Image container ensures full width */
+    .image-side img {
+      width: 100% !important;
+      height: auto !important;
+      object-fit: cover; /* Ensures image covers the width proportionally */
     }
 
-    .text-with-image[style*="--text-alignment: right"] .image-side {
-      margin-left: auto !important;
-    }
-
-    .text-with-image[style*="--text-alignment: left"] .image-side {
-      margin-right: auto !important;
-    }
-
+    /* CHANGED: Text always appears after image (already is, but ensuring order) */
     .text-wrapper {
       grid-column: 1 !important;
       grid-row: 2 !important;
       width: 100% !important;
+      order: 2; /* Explicitly set order */
+    }
+
+    /* Ensure image is always first */
+    .image-side {
+      order: 1;
     }
 
     /* Apply text alignment from CSS variable */
