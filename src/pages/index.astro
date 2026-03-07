@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SitePage from "../components/SitePage.astro";
 import TextWithImage from "../components/TextWithImage.astro";
+import QuoteBlock from "../components/QuoteBlock.astro";
 import { CONFIG } from "../site-config";
 import ServiceGrid from "../components/ServiceGrid.astro";
 import ServiceCard from "../components/ServiceCard.astro";
@@ -53,6 +54,18 @@ const services = [
   <SitePage
     title=""
   >
+
+    <QuoteBlock
+      author="Rainer Maria Rilke, 1929"
+      position="left"
+      align="right"
+      edgeMargin="0.0rem"
+      size="md"
+    >
+      "Perhaps everything terrible is, in its deepest essence, something
+      helpless that wants help from us."
+    </QuoteBlock>
+
     <TextWithImage
       imageSrc=`${import.meta.env.BASE_URL}/images/intro-image-1.jpg`
       imageAlt="Sample image"
