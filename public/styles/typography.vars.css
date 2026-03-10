@@ -31,7 +31,7 @@
 :root {
   /* Desktop defaults */
   --heading-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --heading-font-weight: 600;
+  --heading-font-weight: 400;
   --heading-line-height: 1.2;
   --heading-letter-spacing: -0.02em;
   --heading-align: left;
