@@ -1,4 +1,4 @@
-/* Service Card Styles - Beige with Graphite Letters (Matching Dropdown Aesthetic) */
+/* Service Card Styles - With optional image and description */
 
 .service-card {
   display: flex;
@@ -7,14 +7,14 @@
   padding: 1.5rem 1rem;
 
   /* Beige background matching dropdown aesthetic - slightly transparent */
-  background: rgba(245, 240, 230, 0.65); /* Warm beige - matches dropdown opacity */
+  background: rgba(245, 240, 230, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
   /* Subtle border matching dropdown */
   border-radius: var(--radius-md, 0.75rem);
-  border: 1px solid rgba(255, 255, 255, 0.3); /* White border like dropdown */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Shadow matching dropdown */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
   transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
 
@@ -26,7 +26,7 @@
   width: 100%;
 }
 
-/* Image wrapper for consistent sizing */
+/* Image wrapper - only shown when image exists */
 .service-card-image-wrapper {
   width: 100%;
   display: flex;
@@ -48,7 +48,7 @@
   border-radius: calc(var(--radius-md, 0.75rem) - 2px);
 }
 
-/* Content container - centered */
+/* Content container - base styles */
 .service-card-content {
   display: flex;
   flex-direction: column;
@@ -56,6 +56,13 @@
   text-align: center;
   width: 100%;
   gap: 0.6rem;
+}
+
+/* Title-only variant - vertically centered when no image and no description */
+.service-card-content--title-only {
+  min-height: 120px; /* Give some height for empty cards */
+  justify-content: center;
+  gap: 0; /* Remove gap since there's only title */
 }
 
 /* Title styling - graphite/grey like dropdown text */
@@ -73,7 +80,13 @@
   word-wrap: break-word;
 }
 
-/* Description styling - slightly lighter graphite */
+/* Title-only variant - ensure perfect centering */
+.service-card-content--title-only .service-card-title {
+  margin: 0;
+  padding: 0.5rem 0; /* Add a little breathing room */
+}
+
+/* Description styling - only shown when description exists */
 .service-card-description {
   margin: 0;
   font-size: 0.95rem;
@@ -101,8 +114,8 @@
 .service-card:hover {
   transform: translateY(-3px);
 
-  /* RESTORED: Original background at same transparency */
-  background: rgba(245, 240, 230, 0.65); /* Same as base - no change */
+  /* Original background at same transparency */
+  background: rgba(245, 240, 230, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
@@ -119,7 +132,7 @@
   outline-offset: 2px;
   transform: translateY(-2px);
 
-  /* RESTORED: Original background */
+  /* Original background */
   background: rgba(245, 240, 230, 0.65);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
 }
@@ -164,6 +177,11 @@
   .service-card:hover {
     background: rgba(245, 240, 230, 0.75); /* Keep mobile opacity */
   }
+
+  /* Title-only variant on mobile */
+  .service-card-content--title-only {
+    min-height: 100px; /* Slightly smaller on mobile */
+  }
 }
 
 /* Small mobile devices */
@@ -187,6 +205,15 @@
   /* Mobile hover - keep opacity */
   .service-card:hover {
     background: rgba(245, 240, 230, 0.8);
+  }
+
+  /* Title-only variant on small mobile */
+  .service-card-content--title-only {
+    min-height: 80px;
+  }
+
+  .service-card-content--title-only .service-card-title {
+    font-size: 1rem; /* Slightly smaller title on very small screens */
   }
 }
 
@@ -221,6 +248,11 @@
   .service-card:hover {
     background: rgba(250, 245, 235, 0.95); /* Keep high contrast background */
   }
+
+  /* Title-only variant in high contrast */
+  .service-card-content--title-only {
+    min-height: 100px;
+  }
 }
 
 /* Reduced motion preference */
@@ -237,8 +269,8 @@
 /* Dark theme support - matching dropdown dark mode aesthetic */
 [data-theme="theme-floral"][data-dark="true"] .service-card,
 .theme-dark .service-card {
-  /* Dark beige/dropdown background */
-  background: rgba(40, 40, 40, 0.75); /* Dark grey matching dropdown aesthetic */
+  /* Dark grey background matching dropdown aesthetic */
+  background: rgba(40, 40, 40, 0.75);
   border-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
 }
@@ -255,8 +287,14 @@
 
 [data-theme="theme-floral"][data-dark="true"] .service-card:hover,
 .theme-dark .service-card:hover {
-  /* RESTORED: Original dark background on hover */
+  /* Original dark background on hover */
   background: rgba(40, 40, 40, 0.75); /* Same as base */
   border-color: rgba(255, 255, 255, 0.25);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark theme title-only variant */
+[data-theme="theme-floral"][data-dark="true"] .service-card-content--title-only,
+.theme-dark .service-card-content--title-only {
+  min-height: 120px;
 }
