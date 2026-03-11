@@ -84,8 +84,8 @@
 .site-header-title {
   font-size: var(--header-title-size);
   margin: 0;
-  line-height: 1.2;
-  font-weight: 600;
+  line-height: 1.6;
+  font-weight: 500;
 }
 
 .site-header-subtitle-group {
@@ -114,9 +114,9 @@
 }
 
 .subtitle-sep {
-  opacity: 0.5;
+  opacity: 0.8;
   user-select: none;
-  font-weight: 300;
+  font-weight: 900;
 }
 
 /* ==================================================
